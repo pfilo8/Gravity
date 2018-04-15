@@ -1,16 +1,17 @@
 body {
     background-color: lightyellow;
     margin: 16px;
+    font-family: monospace;
+    font-size: 16pt;
 }
 
 #mapid { 
-    float: left;
+    margin: auto;
     height: 500px;
     width: 80%;
     border-radius: 5px;
 }
-#sidebar {
-    float: right;
-    width: 20%;
-    min-width: 200px;
+
+.header {
+    text-align: center;
 }

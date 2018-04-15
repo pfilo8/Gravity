@@ -19,20 +19,8 @@ function onMapClick(e) {
 mymap.on('click', onMapClick);
 
 
-function addToSidebar(companies){
-    var toplist = document.querySelector('#toplist');
-    companies.forEach((company)=>{
-        var element = document.createElement("li");
-        element.appendChild(document.createTextNode(company.name + company.score));
-        toplist.appendChild(element);
-    })
-}
-
-
 function populateMap(){
     companies = JSON.parse(this.responseText);
-    top_companies = companies.slice(0,5);
-    addToSidebar(top_companies);
     console.log(companies.length);
     minscore = companies[companies.length - 1].score;
     companies.forEach((company)=>{
