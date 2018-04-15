@@ -1,0 +1,13 @@
+{% extends "gravity/base.html" %}
+{% load staticfiles %}
+
+{% block title %}Mapa{% endblock %}
+
+{% block content %}
+    <div id="mapid"></div>
+{% endblock %}
+
+{% block scripts %}
+    <script src="{% static 'js/map.js' %}"></script>
+    <script src="{% static 'js/leaflet-heat.js' %}"></script>
+{% endblock %}
