@@ -7,7 +7,7 @@ body {
 
 #mapid { 
     margin: auto;
-    height: 500px;
+    height: 460px;
     width: 80%;
     border-radius: 5px;
 }
@@ -18,4 +18,10 @@ body {
 
 .gradient { 
     background: radial-gradient(red, green, blue);
+}
+
+#summary {
+    width: 70%;
+    margin: 16px auto;
+    text-align: center;
 }
