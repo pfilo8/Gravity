@@ -1,1 +1,16 @@
-#mapid { height: 400px; }
+body {
+    background-color: lightyellow;
+    margin: 16px;
+}
+
+#mapid { 
+    float: left;
+    height: 500px;
+    width: 80%;
+    border-radius: 5px;
+}
+#sidebar {
+    float: right;
+    width: 20%;
+    min-width: 200px;
+}

@@ -7,6 +7,15 @@
     <div id="mapid"></div>
 {% endblock %}
 
+{% block sidebar %}
+    <div id="sidebar">
+        <h1>Gravity</h1> 
+        <p>Poniższa aplikacja została stworzona na potrzeby hackathonu BankItUp.</p>
+        <ul id="toplist">
+        </ul>
+    </div>
+{% endblock %}
+
 {% block scripts %}
     <script src="{% static 'js/map.js' %}"></script>
     <script src="{% static 'js/leaflet-heat.js' %}"></script>

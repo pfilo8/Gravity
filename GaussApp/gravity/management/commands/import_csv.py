@@ -18,8 +18,8 @@ class Command(BaseCommand):
         file_path = options['file_path']
 
         with open(file_path) as f:
-            reader = csv.reader(f)
-            for name, longtitude, latitude, number_of_opinions, average_opinion in reader:
+            reader = csv.reader(f,delimiter=';')
+            for name, longtitude, latitude, average_opinion, number_of_opinions in reader:
                 company, created = Company.objects.get_or_create(
                     name = name,
                     x = longtitude,
