@@ -9,11 +9,22 @@ accessToken: 'pk.eyJ1IjoidmljcmFjIiwiYSI6ImNqZzAyY3k4aTMzbGYycXFra2pvOWNiaWwifQ.
 var user = 0;
 
 function onMapClick(e) {
+    console.log(e.latlng);
     if(user){
         mymap.removeLayer(user);
     }
     user = new L.marker(e.latlng);
     mymap.addLayer(user);
+    requrl = "http://localhost:8000/rcmd" + '?' + 'lat=' + e.latlng.lat +  '&' + 'lng=' + e.latlng.lng;
+    var req = new XMLHttpRequest();
+    req.addEventListener('load', tellUserIfWorthy);
+    req.open('GET', requrl);
+    req.send();
+}
+
+function tellUserIfWorthy(){
+    data = JSON.parse(this.responseText);
+    console.log("Your needed score is " + data["needed_score"])
 }
 
 mymap.on('click', onMapClick);
@@ -28,7 +39,8 @@ function populateMap(){
             color: 'red',
             fillColor: '#f03',
             fillOpacity: 0.5,
-            radius: (company.score - minscore + 0.2) * 30
+            radius: (company.score - minscore + 0.2) * 30,
+            className: "gradient"
         }).addTo(mymap).bindPopup("<h1>" + company.name + "</h1>");
     })
 }

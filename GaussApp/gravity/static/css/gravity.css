@@ -15,3 +15,7 @@ body {
 .header {
     text-align: center;
 }
+
+.gradient { 
+    background: radial-gradient(red, green, blue);
+}
