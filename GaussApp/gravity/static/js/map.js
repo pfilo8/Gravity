@@ -6,6 +6,19 @@ id: 'mapbox.streets',
 accessToken: 'pk.eyJ1IjoidmljcmFjIiwiYSI6ImNqZzAyY3k4aTMzbGYycXFra2pvOWNiaWwifQ.KBHwh1w_jp0C1XJZGRlkOA'
 }).addTo(mymap);
 
+var user = 0;
+
+function onMapClick(e) {
+    if(user){
+        mymap.removeLayer(user);
+    }
+    user = new L.marker(e.latlng);
+    mymap.addLayer(user);
+}
+
+mymap.on('click', onMapClick);
+
+
 function addToSidebar(companies){
     var toplist = document.querySelector('#toplist');
     companies.forEach((company)=>{
@@ -21,12 +34,13 @@ function populateMap(){
     top_companies = companies.slice(0,5);
     addToSidebar(top_companies);
     console.log(companies.length);
+    minscore = companies[companies.length - 1].score;
     companies.forEach((company)=>{
         var circle = L.circle([company.y, company.x], {
             color: 'red',
             fillColor: '#f03',
             fillOpacity: 0.5,
-            radius: company.score^4 * 5
+            radius: (company.score - minscore + 0.2) * 30
         }).addTo(mymap).bindPopup("<h1>" + company.name + "</h1>");
     })
 }
