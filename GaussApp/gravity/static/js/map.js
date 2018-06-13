@@ -11,15 +11,20 @@ function onMapClick(e) {
     mymap.addLayer(user);
     requrl = `/rcmd?lat=${e.latlng.lat}&lng=${e.latlng.lng}`;
     var req = new XMLHttpRequest();
-    req.addEventListener('load', tellUserIfWorthy);
+    req.addEventListener('load', updateSidebar);
     req.open('GET', requrl);
     req.send();
 }
 
 function tellUserIfWorthy(){
-    data = JSON.parse(this.responseText);
+    data = JSON.parse(this);
     console.log("Your needed score is " + data["needed_score"]);
     document.getElementById('score').innerHTML = data["needed_score"];
+}
+
+function updateSidebar(){
+    data = JSON.parse(this);
+    console.log(data);
 }
 
 function makeLeaderElt(company){
