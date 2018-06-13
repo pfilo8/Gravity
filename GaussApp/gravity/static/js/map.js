@@ -2,6 +2,7 @@ var mymap = L.map('mapid').setView([51.111, 17.034], 13);
 L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', { attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>', maxZoom: 18, id: 'mapbox.streets', accessToken: 'pk.eyJ1IjoidmljcmFjIiwiYSI6ImNqZzAyY3k4aTMzbGYycXFra2pvOWNiaWwifQ.KBHwh1w_jp0C1XJZGRlkOA' }).addTo(mymap);
 
 var user = 0;
+var highlighted = [];
 
 function onMapClick(e) {
     if(user){
@@ -22,6 +23,22 @@ function clearChilds(elt){
     }
 }
 
+function clearHighlighted(){
+    for(let h of highlighted){
+        mymap.removeLayer(h);
+    }
+    highlighted = [];
+}
+
+function highlightOnMap(company){
+    let c = L.circle([company.y, company.x], {
+        color: 'green',
+        fillOpacity: 1,
+        radius: 50
+    }).addTo(mymap)
+    highlighted.push(c);
+}
+
 
 function formatOpinion(company){
     company["reviews"] = `${company.opinionsN}/${company.avg}`;
@@ -31,7 +48,8 @@ function formatOpinion(company){
 function updateSidebar(){
     clearChilds(document.getElementById("leaders"));
     data = JSON.parse(this.responseText);
-    console.log(data);
+    clearHighlighted();
+    data.map(highlightOnMap);
     data.map(formatOpinion).map(makeLeaderElt).map(appendToLeaders);
 }
 

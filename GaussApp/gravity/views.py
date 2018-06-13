@@ -18,7 +18,7 @@ def rcmd(request):
     x = float(request.GET.get('lng', 0))
     y = float(request.GET.get('lat', 0))
     best_nearby_companies = analytics.leaders(x,y)
-    data = [{"name":c.name, "avg": c.average_opinion,"opinionsN":c.opinions, "address": c.address} for c in best_nearby_companies]
+    data = [{"name":c.name, "avg": c.average_opinion,"opinionsN":c.opinions, "address": c.address, "x":c.x, "y":c.y} for c in best_nearby_companies]
     response = HttpResponse(json.dumps(data), content_type="application/json")
     return response
 
