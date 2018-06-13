@@ -68,4 +68,7 @@ def calculate_required_score(x, y, radius):
 
 def calculate_required_average_opinion(x, y, radius, num_opinions):
     required_score = calculate_required_score(x, y, radius)
-    return required_score + 0.98/m.sqrt(num_opinions)
+    try:
+        return required_score + 0.98/m.sqrt(num_opinions)
+    except:
+        return required_score
