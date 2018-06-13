@@ -9,7 +9,9 @@ class Company(models.Model):
 
     opinions = models.IntegerField()
 
-    average_opinion = models.FloatField()
+    average_opinion = models.FloatField() 
+
+    address = models.CharField(max_length=255)
 
     def __str__(self):
         return self.name
