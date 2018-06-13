@@ -1,5 +1,5 @@
-var mymap = L.map('mapid').setView([51.111, 17.034], 16);
-L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', { attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>', maxZoom: 13, id: 'mapbox.streets', accessToken: 'pk.eyJ1IjoidmljcmFjIiwiYSI6ImNqZzAyY3k4aTMzbGYycXFra2pvOWNiaWwifQ.KBHwh1w_jp0C1XJZGRlkOA' }).addTo(mymap);
+var mymap = L.map('mapid').setView([51.111, 17.034], 13);
+L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', { attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>', maxZoom: 18, id: 'mapbox.streets', accessToken: 'pk.eyJ1IjoidmljcmFjIiwiYSI6ImNqZzAyY3k4aTMzbGYycXFra2pvOWNiaWwifQ.KBHwh1w_jp0C1XJZGRlkOA' }).addTo(mymap);
 
 var user = 0;
 
@@ -62,9 +62,8 @@ function populateMap(){
         var circle = L.circle([company.y, company.x], {
             color: 'red',
             fillColor: '#f03',
-            fillOpacity: 0.5,
-            radius: (company.score - minscore + 0.2) * 30,
-            className: "gradient"
+            fillOpacity: 1,
+            radius: (company.score - minscore + 0.2) * 12
         }).addTo(mymap).bindPopup("<h1>" + company.name + "</h1>" + '<p>Score: ' + company.score + '</p>');
     })
 }
