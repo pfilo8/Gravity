@@ -27,6 +27,18 @@ def vector_length(vec):
 def get_company_position(company):
     return np.array([company.x, company.y])
 
+def leaders(x, y, n = 5):
+    companies = models.Company.objects.all()
+    position = np.array([x,y])
+    scores = []
+    
+    for company in companies:
+        company_position = np.array([company.x, company.y])
+        score = company.average_opinion*company.opinions/(calculate_distance(position, company_position))
+        scores.append((score,company))
+    
+    scores.sort()
+    return [scores[i][1] for i in range(n)]
 
 def calculate_force(position, company):
     company_position = get_company_position(company)
