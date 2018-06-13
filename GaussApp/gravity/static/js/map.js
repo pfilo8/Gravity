@@ -83,6 +83,12 @@ function populateMap(){
             fillOpacity: 1,
             radius: (company.score - minscore + 0.2) * 12
         }).addTo(mymap).bindPopup("<h1>" + company.name + "</h1>" + '<p>Score: ' + company.score + '</p>');
+        circle.on('mouseover', function (e) {
+            this.openPopup();
+        });
+        circle.on('mouseout', function (e) {
+            this.closePopup();
+        });
     })
 }
 
