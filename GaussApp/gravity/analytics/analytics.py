@@ -4,7 +4,10 @@ from .. import models
 
 
 def score(company):
-    return company.average_opinion - 0.98/m.sqrt(company.opinions)
+    try:
+        return company.average_opinion - 0.98/m.sqrt(company.opinions)
+    except:
+        return 0
 
 
 def calculate_radius(score):
