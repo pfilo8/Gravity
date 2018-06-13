@@ -40,7 +40,7 @@ def leaders(x, y, n = 5):
         score = company.average_opinion*company.opinions/(calculate_distance(position, company_position))
         scores.append((score,company))
     
-    scores.sort()
+    scores.sort(key = lambda e: e[0])
     return [scores[i][1] for i in range(n)]
 
 def calculate_force(position, company):
