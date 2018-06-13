@@ -24,7 +24,7 @@ class Command(BaseCommand):
                     name = name,
                     x = longtitude,
                     y = latitude,
-                    opinions = number_of_opinions,
+                    opinions = int(float(number_of_opinions)),
                     average_opinion = average_opinion,
                     address = address
                 )
