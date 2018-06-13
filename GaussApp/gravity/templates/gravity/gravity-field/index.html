@@ -3,6 +3,17 @@
 
 {% block title %}Gravity{% endblock %}
 
+{% block sidebar %}
+<h1 class="header">Leaders:</h1>
+<div id="leaders">
+<div class="leader">
+    <p class="name">Nazwa firmy 1</p>
+    <p class="reviews">Liczba recenzji/średnia</p>
+    <p class="address">Adres firmy</p>
+</div>
+</div>
+{% endblock %}
+
 {% block content %}
     <div id="mapid"></div>
     <div id="summary">Your needed score is: <span id="score">Click on the map to get to know!</span></div>

@@ -1,6 +1,6 @@
 body {
     background-color: lightyellow;
-    margin: 16px;
+    margin: 0px;
     font-family: monospace;
     font-size: 16pt;
 }
@@ -14,6 +14,42 @@ body {
 
 .header {
     text-align: center;
+}
+
+#sidebar > .header {
+    font-size: 14pt;
+}
+
+#sidebar {
+    border-right: 2px solid black;
+    float: left;
+    height: 300px;
+    width: 20%;
+}
+
+.leader {
+    width: 80%;
+    margin: auto;
+    height: 20%;
+    background-color: black;
+    border-radius: 5px;
+    color: white;
+    padding: 5px;
+}
+
+.leader > * {
+    margin: 0;
+    margin-bottom: 5px;
+    padding: 0;
+}
+
+.leader > .name {
+    font-size: 10pt;
+
+}
+
+.leader > .reviews, .address {
+    font-size: 9pt;
 }
 
 .gradient { 
