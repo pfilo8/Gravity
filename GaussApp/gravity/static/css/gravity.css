@@ -5,6 +5,11 @@ body {
     font-size: 16pt;
 }
 
+#main {
+    float: left;
+    width: 75%;
+}
+
 #mapid { 
     margin: auto;
     height: 460px;
@@ -21,6 +26,7 @@ body {
 }
 
 #sidebar {
+    margin-top: 50px;
     border-right: 2px solid black;
     float: left;
     height: 300px;
@@ -29,7 +35,7 @@ body {
 
 .leader {
     width: 80%;
-    margin: auto;
+    margin: 10px auto;
     height: 20%;
     background-color: black;
     border-radius: 5px;

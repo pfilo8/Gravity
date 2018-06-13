@@ -1,5 +1,5 @@
-//var mymap = L.map('mapid').setView([51.111, 17.034], 16);
-//L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', { attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>', maxZoom: 18, id: 'mapbox.streets', accessToken: 'pk.eyJ1IjoidmljcmFjIiwiYSI6ImNqZzAyY3k4aTMzbGYycXFra2pvOWNiaWwifQ.KBHwh1w_jp0C1XJZGRlkOA' }).addTo(mymap);
+var mymap = L.map('mapid').setView([51.111, 17.034], 16);
+L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', { attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>', maxZoom: 18, id: 'mapbox.streets', accessToken: 'pk.eyJ1IjoidmljcmFjIiwiYSI6ImNqZzAyY3k4aTMzbGYycXFra2pvOWNiaWwifQ.KBHwh1w_jp0C1XJZGRlkOA' }).addTo(mymap);
 
 var user = 0;
 
@@ -22,9 +22,21 @@ function tellUserIfWorthy(){
     document.getElementById('score').innerHTML = data["needed_score"];
 }
 
-function makeLeaderElt(leader){
-    var leaderElt = document.createNode();
+function makeLeaderElt(company){
+    let leaderElt = document.createElement("div");
+    leaderElt.className = "leader";
+    for (let attr of ["name", "reviews","address"]) {
+        let p = document.createElement("p");
+        p.className = attr;
+        p.appendChild(document.createTextNode(company[attr]));
+        leaderElt.appendChild(p)
+    }
     return leaderElt;
+
+}
+
+function appendToLeaders(companyElt){
+    document.getElementById('leaders').appendChild(companyElt);
 }
 
 function populateSidebar(leaders){
@@ -52,19 +64,10 @@ function populateMap(){
     })
 }
 
-//mymap.on('click', onMapClick);
-//var req = new XMLHttpRequest();
-//req.addEventListener("load", populateMap);
-//req.open("GET","/api");
-//req.send();
-populateSidebar();
+mymap.on('click', onMapClick);
+var req = new XMLHttpRequest();
+req.addEventListener("load", populateMap);
+req.open("GET","/api");
+req.send();
+[{"name":"Firma 1", "reviews": "13","address":"Wymyślony adres"}].map(makeLeaderElt).map(appendToLeaders);
 
-
-
-// var circle = L.circle([51.110, 17.03], {
-// color: 'red',
-// fillColor: '#f03',
-// fillOpacity: 0.5,
-// radius: 100
-// }).addTo(mymap).bindPopup("I am a circle.");
-// circle.bindPopup("I am a circle.");
